@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bẳng cửu chương</title>
+</head>
+<body>
+    <h1>Bảng cửu chương</h1>
+    <p id="result"></p>
+    <script>
+        let bangcuuchuong;
+        bangcuuchuong = "<table border='1'>"
+        for(i=1;i<=10;i++){
+            bangcuuchuong=bangcuuchuong+"<tr>";
+            for(j=2;j<10;j++){
+                bangcuuchuong+="<td>"+j+' x '+i+' = '+i*j+"</td>"
+            }
+            bangcuuchuong+="</tr>";
+        }
+        document.getElementById('result').innerHTML=bangcuuchuong;
+    </script>
+</body>
+</html>
