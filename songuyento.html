@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Số nguyên tố</title>
+</head>
+<body>
+    <h1>Hiển thị n số nguyên tố</h1>
+    <input type="number" id="num" placeholder="Nhập n">
+    <button type="button" onclick="getPrimes()">Enter</button>
+    <p id="result"></p>
+    
+    <script>
+        function isPrime(n) {
+            if (n <= 1) return false;  // Số nhỏ hơn hoặc bằng 1 không phải số nguyên tố
+            if (n === 2) return true;  // 2 là số nguyên tố
+            if (n % 2 === 0) return false;  // Nếu n chia hết cho 2 thì không phải số nguyên tố
+
+            // Chỉ cần kiểm tra các số lẻ từ 3 đến căn bậc hai của n
+            for (let i = 3; i <= Math.sqrt(n); i += 2) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+
+        function printPrimes(n) {
+            let count = 0;  // Đếm số lượng số nguyên tố đã tìm thấy
+            let num = 2;    // Bắt đầu kiểm tra từ số 2
+            let result = ""; // Khởi tạo biến để lưu kết quả
+
+            while (count < n) {
+                if (isPrime(num)) {
+                    result += num + "<br>";  // Nối số nguyên tố vào chuỗi kết quả
+                    count++;           // Tăng số lượng số nguyên tố đã tìm thấy
+                }
+                num++;  // Kiểm tra số tiếp theo
+            }
+
+            document.getElementById('result').innerHTML = result;  // Cập nhật nội dung của phần tử
+        }
+
+        function getPrimes() {
+            const n = parseInt(document.getElementById('num').value); // Lấy giá trị từ ô nhập
+            if (isNaN(n) || n <= 0) {
+                document.getElementById('result').innerHTML = "Vui lòng nhập một số nguyên dương."; // Kiểm tra số nhập hợp lệ
+            } else {
+                printPrimes(n);  // Gọi hàm in số nguyên tố
+            }
+        }
+    </script>
+</body>
+</html>
